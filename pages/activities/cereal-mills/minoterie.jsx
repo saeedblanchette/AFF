@@ -2,9 +2,12 @@ import React from "react";
 import Head from "next/head";
 import Navigation from "../../../components/layout/Navigation";
 import Image from "next/image";
+import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from "react-loading-skeleton";
 import { useRouter } from "next/router";
+import dynamic from 'next/dynamic'
 const ProduitsList = [1, 2, 3, 4, 5, 6, 7, 8];
+
 const Minoterie = () => {
   const router = useRouter();
   const { pid } = router.query;

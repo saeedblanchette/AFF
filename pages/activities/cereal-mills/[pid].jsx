@@ -4,10 +4,13 @@ import Navigation from "../../../components/layout/Navigation";
 import Image from "next/image";
 import Skeleton from "react-loading-skeleton";
 import { useRouter } from "next/router";
+import "react-loading-skeleton/dist/skeleton.css";
+import { FiExternalLink } from "react-icons/fi";
+
 const ProduitsList = [1, 2, 3, 4, 5, 6, 7, 8];
 const Minoterie = () => {
-    const router = useRouter();
-    const { pid } = router.query;
+  const router = useRouter();
+  const { pid } = router.query;
   return (
     <div>
       <Head>
@@ -21,23 +24,33 @@ const Minoterie = () => {
       </section>
       <section className="container p-28 ">
         <div>
-          <h1 className="text-4xl text-center p-6 uppercase">{pid} </h1>
+          <h1 className="text-4xl text-center p-6 uppercase font-bold">
+            {pid}{" "}
+          </h1>
           <p className="">
             <Skeleton count={6} />
           </p>
         </div>
-        <div className="grid grid-cols-3 my-10 gap-6">
+        <div className="grid lg:grid-cols-3 my-10 gap-6">
           <div className="col">
             <Skeleton height={200} />
+            <button className="btn  btn-sm  bg-yellow-300 hover:bg-yellow-200  my-5 mx-auto   text-gray-800 m-auto ">
+              View Company site
+            </button>
           </div>
-          <div className="col-span-2">
-            <h1 className="mb-6 mb-6 text-2xl font-bold">Company name</h1>
+          <div className="lg:col-span-2">
+            <h1 className="mb-6 text-2xl font-bold hover:underline decoration-yellow-300">
+              Company name <span className="text-sm underline-none" >(Company with link)</span>
+              <FiExternalLink className="inline text-md mx-2" />
+            </h1>
             <Skeleton count={9} />
           </div>
         </div>
-        <div className="grid grid-cols-3 my-10 gap-6">
-          <div className="col-span-2">
-            <h1 className="mb-6 text-2xl font-bold">Company name</h1>
+        <div className="grid lg:grid-cols-3 my-10 gap-6">
+          <div className="lg:col-span-2">
+            <h1 className="mb-6 text-2xl font-bold ">
+              Company name
+            </h1>
 
             <Skeleton count={9} />
           </div>
@@ -46,7 +59,7 @@ const Minoterie = () => {
           </div>
         </div>
         <h1 className="text-center text-4xl py-4"> Products</h1>
-        <div className="grid grid-cols-4 my-10 gap-6">
+        <div className="grid  grid-cols-2 lg:grid-cols-4 my-10 gap-6">
           {ProduitsList.map((p, i) => (
             <div className="col self-center justify-self-center" key={i}>
               <Skeleton height={150} width={150} />
@@ -54,7 +67,7 @@ const Minoterie = () => {
           ))}
         </div>
         <h1 className="text-center text-4xl py-4"> Brands</h1>
-        <div className="grid grid-cols-4 my-10 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4   my-10 gap-6">
           {ProduitsList.map((p, i) => (
             <div className="col self-center justify-self-center" key={i}>
               <Skeleton height={150} width={150} />

@@ -92,6 +92,7 @@ export default function Home() {
         initial="offscreen"
         whileInView="onscreen"
         viewport={{ once: true, amount: 0.8 }}
+        
       >
         <section className="grid lg:grid-cols-6  lg:gap-x-10 drop-shadow-xl ">
           <motion.div

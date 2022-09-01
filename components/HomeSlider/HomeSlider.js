@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y, Autoplay } from "swiper";
+import { Navigation, Pagination, A11y, Autoplay, EffectCreative } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,6 +8,8 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import "swiper/css/effect-creative";
+import "swiper/css/effect-creative";
 import Slides from "./SlidesData";
 const animation = {
   offscreen: {
@@ -126,17 +128,34 @@ const HomeSlider = () => {
       <Swiper
         spaceBetween={0}
         slidesPerView={1}
-        modules={[Navigation, Pagination, A11y, Autoplay]}
+        effect="creative"
+        modules={[Navigation, Pagination, A11y, Autoplay, EffectCreative]}
         centeredSlides
-        autoplay={{ delay: 8000 }}
+        autoplay={{ delay: 7000 }}
         navigation
+        creativeEffect={{
+          prev: {
+            shadow: true,
+            translate: [0, 100, -200],
+            scale: 0.1,
+            origin: "bottom center",
+          },
+          next: {
+            origin: "bottom center",
+            translate: [0, 100, -200],
+            scale: 0.2,
+          },
+        }}
         centeredSlidesBounds
         // pagination={true}
         pagination={pagination}
       >
         {Slides.map((item, i) => (
           <SwiperSlide key={i}>
-            <div className="h-[90vh] w-[100vw] max-h-[1000px] max-w-[900px]} relative"   style={{ backgroundColor: "rgba(88,85,78,0.2)" }}>
+            <div
+              className="h-[90vh] w-[100vw] max-h-[1000px] max-w-[900px]} relative"
+              style={{ backgroundColor: "rgba(88,85,78,0.2)" }}
+            >
               <Image
                 alt="SLIDER"
                 src={item.image}
@@ -160,10 +179,7 @@ const HomeSlider = () => {
                   Vision
                 </motion.h1>
               </motion.div>
-              <motion.div
-                className="absolute bottom-1/4  left-[10%] z-9  h-96 w-1/2 text-slate-50 p-2"
-              
-              >
+              <motion.div className="absolute bottom-1/4  left-[10%] z-9  h-96 w-1/2 text-slate-50 p-2">
                 <motion.h1
                   variants={animationText}
                   initial="offscreen"
